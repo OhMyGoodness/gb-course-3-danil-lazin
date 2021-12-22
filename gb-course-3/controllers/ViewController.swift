@@ -11,9 +11,19 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        if (Session.shared.tokenId == nil){
+            performSegue(withIdentifier: "authVkSegue", sender: nil)
+        }
+    }
 
+    @IBAction func unwindAuthAction(unwindSegue: UIStoryboardSegue) {
+//        VkAPI.getFriendsList()
+//        VkAPI.getPhotosList()
+//        VkAPI.getGroupsList()
+        VkAPI.getGroupsSearchList()
+    }
 }
 
